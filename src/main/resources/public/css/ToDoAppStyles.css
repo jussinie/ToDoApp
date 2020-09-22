@@ -1,0 +1,28 @@
+body {
+    background-color: khaki;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.header, .mainContent {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    background-color: bisque;
+}
+
+#doneEntries a {
+    color: grey;
+    text-decoration: line-through;
+}
+
+#doneEntries {
+    color: grey;
+    text-decoration: line-through;
+}
+
+a:link {
+    text-decoration: none;
+}

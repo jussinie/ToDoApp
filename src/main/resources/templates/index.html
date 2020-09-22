@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/ToDoAppStyles.css}" type="text/css" rel="stylesheet">
+    <title>My to do -list</title>
+</head>
+<body>
+    <div class="header">
+        <h1>To do app</h1>
+    </div>
+    <div class="mainContent">
+        <h3>Already done:</h3>
+        <table style="width: 75%">
+            <tr>
+               <th>Task:</th>
+                <th>Deadline:</th>
+                <th>Delete:</th>
+            </tr>
+            <tr th:each="todo : ${doneEntries}" id="doneEntries">
+                <td><a th:text="${todo.toDo}" th:href="@{/undo/{id}(id=${todo.id})}"></a></td>
+                <td th:text="${todo.deadline}"></td>
+                <td><a th:text="Delete" th:href="@{/deleteEntry/{id}(id=${todo.id})}"></a></td>
+            </tr>
+        </table>
+        
+        <h3>To do:</h3>
+
+        <table style="width: 75%">
+            <tr>
+                <th>Task:</th>
+                <th>Deadline:</th>
+            </tr>
+            <tr th:each="todo : ${toDoEntries}" id="toDoEntries">
+                <td><a th:text="${todo.toDo}" th:href="@{/markAsDone/{id}(id=${todo.id})}"></a></td>
+                <td th:text="${todo.deadline}"></td>
+            </tr>
+        </table>
+
+        <form th:action="@{/}" method="post">
+            <input type="text" name=toDo>
+            <input type="date" name="deadline">
+            <input type="submit" name="submit" value="Add to do!">
+        </form>
+    </div>
+
+
+</body>
+</html>
